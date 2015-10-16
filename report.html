@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Investor Record</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/themes/default/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/mycss.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+        
+        <!-- Buy List -->
+        <section data-role="page" id="buylist">
+            <header data-role="header">
+                <h1>Buy list</h1>
+                <!-- <img class="img-responsive" src="images/buy.png" alt=""/>  -->
+                    <a href="" 
+                       data-rel="back" data-role="button" data-inline="true" data-icon="back">Back</a>
+                    <a href="#home" 
+                       data-role="button" data-inline="true" data-icon="home">Home</a>                        
+            </header>
+            
+                <div data-role="content">
+                    <ul data-role="listview" data-insert="true" id="blist">
+                        
+                        <li data-icon="carat-r">
+                            <a>A</a>
+                        </li>
+                        <li data-icon="carat-r">
+                            <a>B</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            
+            <footer data-role="footer" data-position="fixed">
+                <h1>&copy;2558 Apisit.ta@egat.co.th</h1>
+            </footer>                        
+        </section>
+        
+        <script type="text/javascript">
+            var serviceURL="http://10.20.93.84/investorrecord_service/buysell.php";
+            var serviceURL2="http://10.20.93.84/investorrecord_service/getinvest_detail.php";
+            var buy;
+            var bu;
+            $("#buylist").on('pageinit',function(event){
+                //$.getJSON(serviceURL,function(data){
+                //    $("#blist li").remove();
+                //})
+            });
+            //ให้ตรวจสอบทั้งเอกสาร 
+            $(document).on('pageshow',"#buylist",function(){
+              //alert("hello");
+              $.getJSON(serviceURL,function(data){
+                    $("#blist li").remove();
+                    //pack ทั้งหมดมาใน ตป. buy แล้วเดี๋ยวจะใช้ วน loop แยกมาด้วย array
+                    buy=data.items;
+                    //จะให้อ่านค่าจากตัวแปร array มาทีละจุด (คำสั่งวน loop ของ jquery)
+                    $.each(buy,function(index,bu){
+                        //alert(index);
+                        //alert(bu.stockname);
+                        $("#blist").append("<li><a href='invest_detail.html?id="+bu.id+"'>"+bu.stockname+"</a></li>");
+                        
+                    });
+                    $("#blist").listview('refresh');
+                    //alert(buy);
+                })
+            });
+        
+            $(document).on('pageshow',"#invest_detail",function(){
+                alert("OK");
+                //----------
+                //var id=getUrlVars()["id"];
+                //$.getJSON(serviceURL2+"?id="+id,function(data){
+                //    var a = data.items;
+                //    $.each(a,function(index,val){
+                //        $("#sp1").html(val.stockname);
+                        //aleart(val.stockname);
+                //    });
+                //});
+            });
+        //---copy จาก อาจารย์--------------------------
+            function getUrlVars() {
+                var vars = [], hash;
+                var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                for (var i = 0; i < hashes.length; i++)
+                {
+                    hash = hashes[i].split('=');
+                    vars.push(hash[0]);
+                    vars[hash[0]] = hash[1];
+                }
+                return vars;
+            }
+        //-------------------------------------------
+        </script>
+       
+             
+    </body>
+</html>

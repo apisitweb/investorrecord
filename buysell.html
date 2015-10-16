@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Buy-Sell</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/themes/default/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/mycss.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>        
+    </head>
+    <body>
+        <!-- grid -->
+        <section data-role="page" id="buy">
+            <header data-role="header" data-add-back-btn="true">
+                <h1>บันทึกการซื้อ-ขาย</h1>
+                <img src="images/buy.png" alt=""/>
+                <img src="images/sell.jpg" alt=""/>
+                    <a href="" 
+                       data-rel="back" data-role="button" data-inline="true" data-icon="back">Back</a>
+                    <a href="index.html#main-menu"
+                       data-role="button" data-inline="true" data-icon="grid">Menu</a>                        
+            </header>
+                <div data-role="content">
+                    <p>กรอกข้อมูล</p>
+                    <!-- สร้าง Form -->
+                    <form>
+                        <div class="ui-field-contain">
+                            <fieldset data-role="controlgroup" data-type="horizontal">
+                                <legend>Buy/Sell</legend>
+                                <input type="radio" name="buy" id="buy">
+                                    <label for="buy">buy</label>
+                                <input type="radio" name="buy" id="sell">
+                                    <label for="sell">sell</label>
+                            </fieldset>
+                        </div>
+                        <div class="ui-field-contain">
+                            
+                            <label>Date</label>
+                                <input type="date">
+                            <label>Stock name</label>
+                                <input type="text" placeholder="Stock name" data-clear-btn="true">
+                            <label>Price (Baht)</label>
+                                <input type="number" placeholder="บาท" max="500">
+                            <label>Amount</label>
+                                <input type="number" placeholder="หุ้น" min="100">
+                            <label>Commission (%)</label>
+                                <input type="number" placeholder="%">
+                            <label>Tax (%)</label>
+                                <input type="number" placeholder="%">                                
+                            <label>Total (Baht)</label>
+                                <input type="number" placeholder="บาท">
+                            <label>Remark</label>
+                            <textarea></textarea>
+                            <label>ID</label>
+                                <input type="number" placeholder="Auto number">
+                        </div>
+                    </form>
+                </div>
+            <footer data-role="footer" data-position="fixed">
+                <h1>&copy;2558 apisit.ta@egat.co.th</h1>
+            </footer>                        
+        </section>        
+    </body>
+</html>
